@@ -5,6 +5,7 @@ import { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, Cartesia
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import AppLayout from "@/components/AppLayout";
+import { RealtimeSolarPanel } from "@/components/analytics/RealtimeSolarPanel";
 
 // Generate mock historical data
 const generateHistorical = () => {
@@ -102,9 +103,9 @@ const Analytics = () => {
           </ResponsiveContainer>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {/* Temperature Trends */}
-          <div className="glass-card p-4">
+          <div className="glass-card p-4 lg:col-span-1">
             <h3 className="text-sm font-medium text-muted-foreground mb-3">Temperature Trends</h3>
             <ResponsiveContainer width="100%" height={250}>
               <LineChart data={filtered}>
@@ -118,7 +119,7 @@ const Analytics = () => {
           </div>
 
           {/* Anomaly Frequency */}
-          <div className="glass-card p-4">
+          <div className="glass-card p-4 lg:col-span-1">
             <h3 className="text-sm font-medium text-muted-foreground mb-3">Anomaly Frequency</h3>
             <ResponsiveContainer width="100%" height={250}>
               <BarChart data={filtered}>
@@ -130,6 +131,9 @@ const Analytics = () => {
               </BarChart>
             </ResponsiveContainer>
           </div>
+
+          {/* Realtime AI Predictions */}
+          <RealtimeSolarPanel />
         </div>
       </div>
     </AppLayout>
